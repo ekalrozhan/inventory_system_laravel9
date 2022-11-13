@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Pos\SupplierController as PosSupplierController;
+use App\Http\Controllers\Pos\SupplierController;
 
 
 Route::get('/', function () {
@@ -16,7 +18,7 @@ Route::controller(DemoController::class)->group(function () {
 });
 
 
- // Admin All Route 
+// Admin All Route 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
     Route::get('/admin/profile', 'Profile')->name('admin.profile');
@@ -25,11 +27,15 @@ Route::controller(AdminController::class)->group(function () {
 
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/update/password', 'UpdatePassword')->name('update.password');
-     
+});
+
+// Supplier All Route 
+Route::controller(SupplierController::class)->group(function () {
+    Route::get('/supplier/all', 'SupplierAll')->name('supplier.all');
 });
 
 
- 
+
 
 
 
@@ -39,7 +45,7 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 // Route::get('/contact', function () {
