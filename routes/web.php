@@ -55,11 +55,11 @@ Route::controller(CustomerController::class)->group(function () {
 // Unit All Route 
 Route::controller(UnitController::class)->group(function () {
     Route::get('/unit/all', 'UnitAll')->name('unit.all');
-    Route::get('/customer/add', 'CustomerAdd')->name('customer.add');
-    Route::post('/customer/store', 'CustomerStore')->name('customer.store');
-    Route::get('/customer/edit/{id}', 'CustomerEdit')->name('customer.edit');
-    Route::post('/customer/update', 'CustomerUpdate')->name('customer.update');
-    Route::get('/customer/delete/{id}', 'CustomerDelete')->name('customer.delete');
+    Route::get('/unit/add', 'UnitAdd')->name('unit.add');
+    Route::post('/unit/store', 'UnitStore')->name('unit.store');
+    Route::get('/unit/edit/{id}', 'UnitEdit')->name('unit.edit');
+    Route::post('/unit/update', 'UnitUpdate')->name('unit.update');
+    Route::get('/unit/delete/{id}', 'UnitDelete')->name('unit.delete');
  
 });
 
