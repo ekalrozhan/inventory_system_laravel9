@@ -16,7 +16,7 @@
 
 
 
-                        <form method="post" action="{{ route('supplier.store') }}" id="myForm">
+                        <form method="post" action="{{ route('customer.store') }}" id="myForm" encytype="multipart/form-data">
                             @csrf
 
                             <div class="row mb-3">
