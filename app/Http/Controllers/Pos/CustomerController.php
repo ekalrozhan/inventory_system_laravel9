@@ -8,8 +8,7 @@ use Auth;
 use Illuminate\Support\Carbon;
 use App\Models\Customer;
 use Image;
-use Auth;
-use Illuminate\Support\Carbon;
+
 
 class CustomerController extends Controller
 {
@@ -25,7 +24,7 @@ class CustomerController extends Controller
         $image = $request->file("customer_image");
         $name_gen = hexdec(uniqid()). "." .$image->getClientOriginalExtension();
 
-        Image::make($image)->resize(200, 200)->save('upload/customer'.$name_gen);
+        Image::make($image)->resize(200, 200)->save('upload/customer/'.$name_gen);
 
         $save_url = 'upload/customer/'.$name_gen;
 
@@ -45,5 +44,56 @@ class CustomerController extends Controller
         );
 
         return redirect()->route('customer.all')->with($notification);
+    }
+
+
+    public function CustomerEdit($id){
+        $customer = Customer::findOrFail($id);
+        return view('backend.customer.customer_edit', compact('customer'));
+    }
+
+    public function CustomerUpdate(Request $request){
+        $customer_id = $request->id;
+        if($request->file('customer_image')){
+            $image = $request->file("customer_image");
+            $name_gen = hexdec(uniqid()). "." .$image->getClientOriginalExtension();
+    
+            Image::make($image)->resize(200, 200)->save('upload/customer/'.$name_gen);
+    
+            $save_url = 'upload/customer/'.$name_gen;
+    
+            Customer::findOrFail($customer->id)->update([
+                'name' => $request->name,
+                'mobile_no' => $request->mobile_no,
+                'email' => $request->email,
+                'address' => $request->address,
+                'customer_image' => $save_url,
+                'created_by' => Auth::user()->id,
+                'created_at' => Carbon::now()
+            ]);
+    
+            $notification = array(
+                'message' => 'Customer Updated With Image Successfully',
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->route('customer.all')->with($notification);
+        }else{
+            Customer::findOrFail($customer_id)->update([
+                'name' => $request->name,
+                'mobile_no' => $request->mobile_no,
+                'email' => $request->email,
+                'address' => $request->address,
+                'created_by' => Auth::user()->id,
+                'created_at' => Carbon::now()
+            ]);
+    
+            $notification = array(
+                'message' => 'Customer Updated Without Image Successfully',
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->route('customer.all')->with($notification);
+        }
     }
 }

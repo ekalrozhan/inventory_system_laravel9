@@ -10,19 +10,20 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Add Customer Page </h4><br><br>
+                        <h4 class="card-title">Edit Customer Page </h4><br><br>
 
 
 
 
 
-                        <form method="post" action="{{ route('customer.store') }}" id="myForm" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('customer.update') }}" id="myForm" enctype="multipart/form-data">
                             @csrf
 
+                            <input type="hidden" name="id" value={{ $customer->id }}>
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Name</label>
                                 <div class="form-group col-sm-10">
-                                    <input name="name" class="form-control" type="text">
+                                    <input name="name" class="form-control" type="text" value={{ $customer->name }}>
                                 </div>
                             </div>
                             <!-- end row -->
@@ -31,7 +32,7 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Mobile </label>
                                 <div class="form-group col-sm-10">
-                                    <input name="mobile_no" class="form-control" type="text">
+                                    <input name="mobile_no" class="form-control" type="text" value={{ $customer->mobile_no }}>
                                 </div>
                             </div>
                             <!-- end row -->
@@ -41,21 +42,21 @@
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Email</label>
                                 <div class="form-group col-sm-10">
-                                    <input name="email" class="form-control" type="email">
+                                    <input name="email" class="form-control" type="email" value={{ $customer->email }}>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Address</label>
                                 <div class="form-group col-sm-10">
-                                    <input name="address" class="form-control" type="text">
+                                    <input name="address" class="form-control" type="text" value={{ $customer->address }}>
                                 </div>
                             </div>
                             <!-- end row -->
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Customer Image </label>
                 <div class="form-group col-sm-10">
-                    <input name="customer_image" class="form-control" type="file"  id="image">
+                    <input name="customer_image" class="form-control" type="file"  id="image" >
                 </div>
             </div>
             <!-- end row -->
@@ -63,13 +64,13 @@
             <div class="row mb-3">
                  <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                 <div class="col-sm-10">
-                    <img id="showImage" class="rounded avatar-lg" src="{{ url('upload/no_image.jpg') }}" alt="Card image cap">
+                    <img id="showImage" class="rounded avatar-lg" src="{{ asset($customer->customer_image) }}" alt="Card image cap">
                 </div>
             </div>
 
 
 
-            <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Customer">
+            <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Customer">
         </form>
 
 
@@ -101,9 +102,7 @@
                 address: {
                     required : true,
                 }, 
-                customer_image: {
-                    required : true,
-                }, 
+               
             },
             messages :{
                 name: {
@@ -118,9 +117,7 @@
                 address: {
                     required : 'Please Enter Your Address',
                 },
-                customer_image: {
-                    required : 'Please Select One Image',
-                },
+              
             },
             errorElement : 'span', 
             errorPlacement: function (error,element) {
