@@ -64,4 +64,15 @@ class SupplierController extends Controller
 
         return redirect()->route('supplier.all')->with($notification);
     }
+
+    public function SupplierDelete($id){
+        Supplier::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Supplier deleted successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }
