@@ -25,4 +25,24 @@ class ProductController extends Controller
         $unit = Unit::all();
         return view('backend.product.product_add', compact('supplier', 'category', 'unit'));
     }
+
+    public function ProductStore(Request $request){
+        Product::insert([
+            'name' => $request->name,
+            'supplier_id' => $request->supplier_id,
+            'unit_id' => $request->unit_id,
+            'category_id' => $request->category_id,
+            'quantity' => '0',
+            'created_by' => Auth::user()->id,
+            'created_at' => Carbon::now(),
+        ]);
+
+        
+        $notification = array(
+            'message' => 'Product Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('product.all')->with($notification);
+    }
 }
