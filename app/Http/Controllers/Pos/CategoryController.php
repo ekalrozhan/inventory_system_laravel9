@@ -33,4 +33,36 @@ class CategoryController extends Controller
 
         return redirect()->route('category.all')->with($notification);
     }
+
+    public function CategoryEdit($id){
+        $category = Category::findOrFail($id);
+        return view('backend.category.category_edit', compact('category'));
+    }
+
+    public function CategoryUpdate(Request $request){
+        $category_id = $request->id;
+        Category::findOrFail($category_id)->update([
+            'name' => $request->name
+        ]);
+
+        $notification = array(
+            'message' => 'Category Updated Successfully',
+            'alert-type' => 'success'
+        );
+        
+        return redirect()->route('category.all')->with($notification);
+        
+    }
+
+    public function CategoryDelete($id){
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        $notification = array(
+            'message' => 'Category Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        
+        return redirect()->back()->with($notification);
+    }
 }

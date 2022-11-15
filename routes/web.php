@@ -66,9 +66,12 @@ Route::controller(UnitController::class)->group(function () {
 
 // Category all route
 Route::controller(CategoryController::class)->group(function () {
-    Route::get('/categroy/all', 'CategoryAll')->name('category.all');
-    Route::get('/categroy/add', 'CategoryAdd')->name('category.add');
-    Route::post('/categroy/store', 'CategoryStore')->name('category.store');
+    Route::get('/category/all', 'CategoryAll')->name('category.all');
+    Route::get('/category/add', 'CategoryAdd')->name('category.add');
+    Route::post('/category/store', 'CategoryStore')->name('category.store');
+    Route::get('/category/edit/{id}', 'CategoryEdit')->name('category.edit');
+    Route::post('/category/update', 'CategoryUpdate')->name('category.update');
+    Route::get('/category/delete/{id}', 'CategoryDelete')->name('category.delete');
 
  
 });
