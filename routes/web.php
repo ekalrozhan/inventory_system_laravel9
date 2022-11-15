@@ -67,6 +67,8 @@ Route::controller(UnitController::class)->group(function () {
 // Category all route
 Route::controller(CategoryController::class)->group(function () {
     Route::get('/categroy/all', 'CategoryAll')->name('category.all');
+    Route::get('/categroy/add', 'CategoryAdd')->name('category.add');
+    Route::post('/categroy/store', 'CategoryStore')->name('category.store');
 
  
 });
