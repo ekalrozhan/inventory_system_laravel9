@@ -62,7 +62,7 @@ class CustomerController extends Controller
     
             $save_url = 'upload/customer/'.$name_gen;
     
-            Customer::findOrFail($customer->id)->update([
+            Customer::findOrFail($customer_id)->update([
                 'name' => $request->name,
                 'mobile_no' => $request->mobile_no,
                 'email' => $request->email,

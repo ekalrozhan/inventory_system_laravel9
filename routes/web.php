@@ -7,6 +7,7 @@ use App\Http\Controllers\Pos\SupplierController as PosSupplierController;
 use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\UnitController;
+use App\Http\Controllers\Pos\CategoryController;
 
 
 Route::get('/', function () {
@@ -63,6 +64,12 @@ Route::controller(UnitController::class)->group(function () {
  
 });
 
+// Category all route
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/categroy/all', 'CategoryAll')->name('category.all');
+
+ 
+});
 
 
 
