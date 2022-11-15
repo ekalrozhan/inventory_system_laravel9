@@ -8,6 +8,7 @@ use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Pos\CategoryController;
+use App\Http\Controllers\Pos\ProductController;
 
 
 Route::get('/', function () {
@@ -72,6 +73,15 @@ Route::controller(CategoryController::class)->group(function () {
     Route::get('/category/edit/{id}', 'CategoryEdit')->name('category.edit');
     Route::post('/category/update', 'CategoryUpdate')->name('category.update');
     Route::get('/category/delete/{id}', 'CategoryDelete')->name('category.delete');
+
+ 
+});
+
+
+// Product all route
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/product/all', 'ProductAll')->name('product.all');
+
 
  
 });
