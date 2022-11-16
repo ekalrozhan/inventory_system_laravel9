@@ -96,6 +96,7 @@ Route::controller(ProductController::class)->group(function () {
 // Purchase all route
 Route::controller(PurchaseController::class)->group(function () {
     Route::get('/purchase/all', 'PurchaseAll')->name('purchase.all');
+    Route::get('/purchase/add', 'PurchaseAdd')->name('purchase.add');
     
 
 
