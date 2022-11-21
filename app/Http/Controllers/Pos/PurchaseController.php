@@ -14,7 +14,7 @@ use App\Models\Category;
 class PurchaseController extends Controller
 {
     public function PurchaseAll(){
-        $allData = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc');
+        $allData = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->get();
         return view('backend.purchase.purchase_all', compact('allData'));
     }
 

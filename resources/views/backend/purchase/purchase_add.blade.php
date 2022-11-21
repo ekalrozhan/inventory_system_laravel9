@@ -87,7 +87,7 @@
         $(document).on('change', '#supplier_id', function(){
             var supplier_id = $(this).val();
             $.ajax({
-                url: "{{ route('get-category) }}",
+                url: "{{ route('get-category') }}",
                 type: "GET",
                 data: {supplier_id: supplier_id},
                 success: function(data){
