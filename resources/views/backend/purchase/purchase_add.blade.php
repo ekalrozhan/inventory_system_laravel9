@@ -66,13 +66,45 @@
                             </div>
                         </div>     <!-- end row -->
 
-
-
-                     
-
-
-
                     </div> <!-- end card body -->
+
+                     <!-- ------------------------ -->
+                    <div class="card-body">
+                       <form action="" method="">
+                        @csrf
+                        <table class="table-sm table-bordered" width=100% style="border-color: #ddd;">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Product Name</th>
+                                    <th>PSC/KG</th>
+                                    <th>Unit Price</th>
+                                    <th>Description</th>
+                                    <th>Total Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="addRow" class="addRow">
+
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="5"></td>
+                                    <td>
+                                        <input type="text" name="estimated_amount" value="0" id="estimated_amount" class="form-control estimated_amount" readonly style="background-color: #ddd;">
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info" id="storeButton">Purchase Store</button>
+                        </div>
+                       </form>
+                    </div> <!-- end card-body -->
                 </div>
             </div> <!-- end col -->
         </div>
