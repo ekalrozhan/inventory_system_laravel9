@@ -114,6 +114,49 @@
     </div>
 </div>
 
+
+<script src="text/x-handlebars-template" id="document-template">
+    <tr class="delete_add_more_item" id="delete_add_more_item">
+    
+    <input type="hidden" name="date[]" value="@{{ date }}">
+    <input type="hidden" name="purchase_no[]" value="@{{ purchase_no }}">
+    <input type="hidden" name="supplier_id[]" value="@{{ supplier_id }}">
+
+    <td>
+        <input type="hidden" name="category_id[]" value="@{{ category_id }}">
+        @{{ category_name }}
+    </td>
+    <td>
+        <input type="hidden" name="product_id[]" value="@{{ product_id }}">
+        @{{ product_name }}
+    </td>
+    <td>
+        <input type="number" min="1" class="form-control buying_qty text-right" name="buying_qty[]" value="">
+        
+    </td>
+    <td>
+        <input type="number" min="1" class="form-control unit_price text-right" name="unit_price[]" value="">
+      
+    </td>
+    <td>
+        <input type="text" min="1" class="form-control" name="description[]">
+      
+    </td>
+    <td>
+        <input type="number" min="1" class="form-control buying_price text-right" name="buying_price[]" value="0" readonly>
+      
+    </td>
+    <td>
+        <input type="number" min="1" class="form-control buying_price text-right" name="buying_price[]" value="0" readonly>
+      
+    </td>
+    <td>
+        <i class="btn btn-danger btn-sm fas fa-window-close removeeventmore"></i>
+    </td>
+</tr>
+
+</script>
+
 <script type="text/javascript">
     $(function(){
         $(document).on('change', '#supplier_id', function(){
